@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css";
 import AuthApiService from "../services/auth-api-service";
-import TokenService from "../services/token-services";
+import TokenService from "../services/token-service";
 import Context from "../Context.js";
 
 export default class Login extends React.Component {

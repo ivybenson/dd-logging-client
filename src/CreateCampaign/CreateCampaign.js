@@ -9,12 +9,17 @@ export default class CreateCampaign extends React.Component {
         Create Campaign
         <form>
           <fieldset>
-            <label>Campaign Name</label>
-            <input></input>
-          </fieldset>
-          <fieldset>
-            <label>Start Date</label>
-            <input></input>
+            <label>Campaign Name: {""}</label>
+            <input
+              type="text"
+              placeholder="campaign"
+              id="campaign"
+              required
+              aria-required="true"
+              aria-label="campaign name"
+              name="campaign"
+            />
+            <button type="submit">Add Campaign</button>
           </fieldset>
         </form>
       </div>

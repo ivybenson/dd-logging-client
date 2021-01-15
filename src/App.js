@@ -1,8 +1,13 @@
 import "./App.css";
 import React from "react";
+import { Route } from "react-router-dom";
 import Context from "./Context";
 import CreateCampaign from "./CreateCampaign/CreateCampaign";
 import CreateCharacter from "./CreateCharacter/CreateCharacter";
+import Dashboard from "./Dashboard/Dashboard";
+import CampaginLog from "./CampaignLog/CampaignLog";
+import PrivateLog from "./PrivateLog/PrivateLog";
+import AddPost from "./AddPost/AddPost";
 
 class App extends React.Component {
   state = {
@@ -12,38 +17,38 @@ class App extends React.Component {
     posts: [
       {
         id: 1,
-        userid: 1,
+        characterid: 1,
         campaignid: 1,
-        title: "",
-        content: "",
-        private: true,
-        datecreated: "01/10/21",
+        title: "post number one",
+        content: "information one",
+        private: false,
+        datecreated: "01/07/21",
       },
       {
         id: 2,
-        userid: 1,
+        characterid: 1,
         campaignid: 1,
-        title: "",
-        content: "",
+        title: "post number two",
+        content: "information two",
         private: true,
-        datecreated: "01/10/21",
+        datecreated: "01/08/21",
       },
       {
         id: 3,
-        userid: 1,
+        characterid: 1,
         campaignid: 1,
-        title: "",
-        content: "",
+        title: "post number three",
+        content: "information three",
         private: true,
-        datecreated: "01/10/21",
+        datecreated: "01/09/21",
       },
       {
         id: 4,
-        userid: 1,
+        characterid: 1,
         campaignid: 1,
-        title: "",
-        content: "",
-        private: true,
+        title: "post number four",
+        content: "information four",
+        private: false,
         datecreated: "01/10/21",
       },
     ],
@@ -53,13 +58,14 @@ class App extends React.Component {
       <Context.Provider value={this.state}>
         <div className="App">
           <header>
-            <h1>RPG Logger</h1>
+            <h1>Dungeons Truth</h1>
           </header>
-          <div>Create User</div>
+          <Route path="/dashboard" component={Dashboard} />
           <CreateCampaign />
           <CreateCharacter />
-          <div>Private Character Log</div>
-          <div>Campaign Log</div>
+          <AddPost />
+          <CampaginLog />
+          <PrivateLog />
         </div>
       </Context.Provider>
     );
