@@ -6,7 +6,6 @@ import CreateCampaign from "./CreateCampaign/CreateCampaign";
 import CreateCharacter from "./CreateCharacter/CreateCharacter";
 import Dashboard from "./Dashboard/Dashboard";
 import CampaginLog from "./CampaignLog/CampaignLog";
-import PrivateLog from "./PrivateLog/PrivateLog";
 import AddPost from "./AddPost/AddPost";
 
 class App extends React.Component {
@@ -52,6 +51,21 @@ class App extends React.Component {
         datecreated: "01/10/21",
       },
     ],
+    addCampaign: (campaign) => {
+      this.setState({
+        campaign: [...this.state.campaign, campaign],
+      });
+    },
+    addCharacter: (character) => {
+      this.setState({
+        characters: [...this.state.characters, character],
+      });
+    },
+    addPost: (post) => {
+      this.setState({
+        characters: [...this.state.posts, post],
+      });
+    },
   };
   render() {
     return (
@@ -65,7 +79,6 @@ class App extends React.Component {
           <CreateCharacter />
           <AddPost />
           <CampaginLog />
-          <PrivateLog />
         </div>
       </Context.Provider>
     );

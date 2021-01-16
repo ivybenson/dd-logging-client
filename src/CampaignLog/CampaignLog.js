@@ -9,14 +9,29 @@ export default class CampaginLog extends React.Component {
     return (
       <div>
         <h2>Campagin Log</h2>
-        <ul>
-          {posts.map((post) => (
-            <li key={post.id}>
-              {post.title}
 
-              <p>Reminder: {post.content}</p>
-            </li>
-          ))}
+        <ul>
+          {posts
+            .filter((post) => !post.private)
+            .map((post) => (
+              <li key={post.id}>
+                {post.title}
+
+                <p>Reminder: {post.content}</p>
+              </li>
+            ))}
+        </ul>
+        <h2>Private Log</h2>
+        <ul>
+          {posts
+            .filter((post) => post.private)
+            .map((post) => (
+              <li key={post.id}>
+                {post.title}
+
+                <p>Reminder: {post.content}</p>
+              </li>
+            ))}
         </ul>
       </div>
     );

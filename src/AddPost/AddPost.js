@@ -17,11 +17,13 @@ export default class AddPost extends React.Component {
 
   addNewPost = (e) => {
     e.preventDefault();
-    const { title, content } = e.target;
+    const { title, content, postType } = e.target;
+
     const post = {
       id: this.context.posts.length + 1,
       title: title.value,
       content: content.value,
+      private: postType.checked,
     };
     fetch(`${config.API_ENDPOINT}api/post`, {
       method: "POST",
@@ -71,7 +73,10 @@ export default class AddPost extends React.Component {
             aria-label="post-content"
             name="content"
           />
-
+          <p>
+            <label htmlFor="postType">Private ?</label>
+            <input type="checkbox" name="postType" id="postType" />
+          </p>
           <button className="add-post-button" type="submit">
             Add Post
           </button>
