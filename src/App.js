@@ -7,19 +7,20 @@ import CreateCharacter from "./CreateCharacter/CreateCharacter";
 import Dashboard from "./Dashboard/Dashboard";
 import CampaginLog from "./CampaignLog/CampaignLog";
 import AddPost from "./AddPost/AddPost";
+import LandingPage from "./LandingPage/LandingPage";
 
 class App extends React.Component {
   state = {
     users: [],
-    campaign: [],
-    characters: [],
+    campaign: {},
+    character: {},
     posts: [
       {
         id: 1,
         characterid: 1,
         campaignid: 1,
-        title: "post number one",
-        content: "information one",
+        title: "public post",
+        content: "I like this character",
         private: false,
         datecreated: "01/07/21",
       },
@@ -52,18 +53,16 @@ class App extends React.Component {
       },
     ],
     addCampaign: (campaign) => {
-      this.setState({
-        campaign: [...this.state.campaign, campaign],
-      });
+      this.setState({ campaign: campaign });
     },
     addCharacter: (character) => {
       this.setState({
-        characters: [...this.state.characters, character],
+        character: character,
       });
     },
     addPost: (post) => {
       this.setState({
-        characters: [...this.state.posts, post],
+        posts: [...this.state.posts, post],
       });
     },
   };
@@ -75,6 +74,7 @@ class App extends React.Component {
             <h1>Dungeons Truth</h1>
           </header>
           <Route path="/dashboard" component={Dashboard} />
+          {/* <LandingPage /> */}
           <CreateCampaign />
           <CreateCharacter />
           <AddPost />

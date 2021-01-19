@@ -1,8 +1,8 @@
 import React from "react";
 
 import Context from "../Context";
-import config from "../config";
-import TokenService from "../services/token-service";
+// import config from "../config";
+// import TokenService from "../services/token-service";
 
 export default class AddPost extends React.Component {
   static contextType = Context;
@@ -25,28 +25,30 @@ export default class AddPost extends React.Component {
       content: content.value,
       private: postType.checked,
     };
-    fetch(`${config.API_ENDPOINT}api/post`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${TokenService.getAuthToken()}`,
-      },
-      body: JSON.stringify(post),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          return res.json().then((error) => {
-            throw error;
-          });
-        }
-        return res.json();
-      })
-      .then((post) => {
-        alert("Your post has been added to the campaign");
-        e.target.reset();
-        this.context.addPost(post);
-      })
-      .catch((error) => this.setState({ error }));
+    // fetch(`${config.API_ENDPOINT}api/post`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     authorization: `Bearer ${TokenService.getAuthToken()}`,
+    //   },
+    //   body: JSON.stringify(post),
+    // })
+    //   .then((res) => {
+    //     if (!res.ok) {
+    //       return res.json().then((error) => {
+    //         throw error;
+    //       });
+    //     }
+    //     return res.json();
+    //   })
+    //   .then((post) => {
+    //     alert("Your post has been added to the campaign");
+    //     e.target.reset();
+    //     this.context.addPost(post);
+    //   })
+    //   .catch((error) => this.setState({ error }));
+    this.context.addPost(post);
+    e.target.reset();
   };
 
   render() {
@@ -54,7 +56,7 @@ export default class AddPost extends React.Component {
       <div className="add-post">
         <form className="add-post-form" onSubmit={this.addNewPost}>
           <p>
-            Title
+            Title: {""}
             <input
               type="text"
               placeholder="title"
@@ -65,6 +67,7 @@ export default class AddPost extends React.Component {
               name="title"
             />
           </p>
+          <p>Thoughts: {""} </p>
           <input
             type="text"
             id="content"

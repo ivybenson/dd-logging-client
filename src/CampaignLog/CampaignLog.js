@@ -15,9 +15,8 @@ export default class CampaginLog extends React.Component {
             .filter((post) => !post.private)
             .map((post) => (
               <li key={post.id}>
-                {post.title}
-
-                <p>Reminder: {post.content}</p>
+                <h4>{post.title}</h4>
+                <p>{post.content}</p>
               </li>
             ))}
         </ul>
@@ -27,9 +26,9 @@ export default class CampaginLog extends React.Component {
             .filter((post) => post.private)
             .map((post) => (
               <li key={post.id}>
-                {post.title}
+                <h4>{post.title}</h4>
 
-                <p>Reminder: {post.content}</p>
+                <p>{post.content}</p>
               </li>
             ))}
         </ul>
