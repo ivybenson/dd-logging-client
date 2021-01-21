@@ -39,6 +39,7 @@ export default class CreateCharacter extends React.Component {
     //   .catch((error) => this.setState({ error }));
 
     this.context.addCharacter(character);
+    this.props.history.push("/dashboard");
   };
 
   render() {

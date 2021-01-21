@@ -40,6 +40,7 @@ export default class CreateCampaign extends React.Component {
     //   .catch((error) => this.setState({ error }));
 
     this.context.addCampaign(campaign);
+    this.props.history.push("/createcharacter");
   };
 
   render() {

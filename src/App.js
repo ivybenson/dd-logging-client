@@ -5,9 +5,10 @@ import Context from "./Context";
 import CreateCampaign from "./CreateCampaign/CreateCampaign";
 import CreateCharacter from "./CreateCharacter/CreateCharacter";
 import Dashboard from "./Dashboard/Dashboard";
-import CampaginLog from "./CampaignLog/CampaignLog";
-import AddPost from "./AddPost/AddPost";
 import LandingPage from "./LandingPage/LandingPage";
+import Signup from "./Signup/Signup";
+import Login from "./Login/Login";
+import NavBar from "./NavBar/Navbar";
 
 class App extends React.Component {
   state = {
@@ -65,20 +66,21 @@ class App extends React.Component {
         posts: [...this.state.posts, post],
       });
     },
+    logout: () => {
+      this.setState({ posts: [], character: {} });
+    },
   };
   render() {
     return (
       <Context.Provider value={this.state}>
         <div className="App">
-          <header>
-            <h1>Dungeons Truth</h1>
-          </header>
+          <Route path="/" component={NavBar} />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/createcampaign" component={CreateCampaign} />
+          <Route path="createcharacter" component={CreateCharacter} />
           <Route path="/dashboard" component={Dashboard} />
-          {/* <LandingPage /> */}
-          <CreateCampaign />
-          <CreateCharacter />
-          <AddPost />
-          <CampaginLog />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" component={Login} />
         </div>
       </Context.Provider>
     );

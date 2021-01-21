@@ -1,6 +1,6 @@
 import React from "react";
-import "./Signup.css";
 import AuthApiService from "../services/auth-api-service";
+import TokenService from "../services/token-service";
 import { Link } from "react-router-dom";
 
 export default class Signup extends React.Component {
@@ -10,19 +10,21 @@ export default class Signup extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password, confirmPassword } = e.target;
-    this.setState({ error: null });
-    AuthApiService.postUser({
-      email: email.value,
-      password: password.value,
-      confirmPassword: confirmPassword.value,
-    })
-      .then((user) => {
-        this.props.history.push("./login");
-      })
-      .catch((res) => {
-        this.setState({ error: res.error });
-      });
+    // const { email, password, confirmPassword } = e.target;
+    // this.setState({ error: null });
+    // AuthApiService.postUser({
+    //   email: email.value,
+    //   password: password.value,
+    //   confirmPassword: confirmPassword.value,
+    // })
+    //   .then((user) => {
+    //     this.props.history.push("./login");
+    //   })
+    //   .catch((res) => {
+    //     this.setState({ error: res.error });
+    //   });
+    TokenService.saveAuthToken("098092840981209wceoiewuhc");
+    this.props.history.push("/dashboard");
   };
 
   render() {
@@ -32,9 +34,7 @@ export default class Signup extends React.Component {
           <h2>Signup</h2>
           <p>
             Add account here or click Log In below if you already have an
-            account. Upon signing in you can add habits right away. Track your
-            habits by tapping on the days that you completed your habit and it
-            will turn green to track that you have completed it that day.
+            account.
           </p>
         </div>
         <form aria-label="signup-form" onSubmit={this.handleSubmit}>

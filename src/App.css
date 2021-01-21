@@ -18,9 +18,13 @@
   }
 }
 
-header {
+.Navbar {
   background-color: #028090;
   font-size: larger;
+}
+
+.add-post {
+  background-color: rgb(179, 173, 173);
 }
 
 .App-header {
