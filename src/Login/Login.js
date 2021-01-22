@@ -25,7 +25,7 @@ export default class Login extends React.Component {
     //     this.setState({ error: res.error });
     //   });
     TokenService.saveAuthToken("098092840981209wceoiewuhc");
-    this.props.history.push("/dashboard");
+    this.props.history.push("/createcampaign");
   };
 
   render() {

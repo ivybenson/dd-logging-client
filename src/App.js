@@ -15,44 +15,7 @@ class App extends React.Component {
     users: [],
     campaign: {},
     character: {},
-    posts: [
-      {
-        id: 1,
-        characterid: 1,
-        campaignid: 1,
-        title: "public post",
-        content: "I like this character",
-        private: false,
-        datecreated: "01/07/21",
-      },
-      {
-        id: 2,
-        characterid: 1,
-        campaignid: 1,
-        title: "post number two",
-        content: "information two",
-        private: true,
-        datecreated: "01/08/21",
-      },
-      {
-        id: 3,
-        characterid: 1,
-        campaignid: 1,
-        title: "post number three",
-        content: "information three",
-        private: true,
-        datecreated: "01/09/21",
-      },
-      {
-        id: 4,
-        characterid: 1,
-        campaignid: 1,
-        title: "post number four",
-        content: "information four",
-        private: false,
-        datecreated: "01/10/21",
-      },
-    ],
+    posts: [],
     addCampaign: (campaign) => {
       this.setState({ campaign: campaign });
     },
@@ -77,7 +40,7 @@ class App extends React.Component {
           <Route path="/" component={NavBar} />
           <Route path="/" exact component={LandingPage} />
           <Route path="/createcampaign" component={CreateCampaign} />
-          <Route path="createcharacter" component={CreateCharacter} />
+          <Route path="/character" component={CreateCharacter} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
