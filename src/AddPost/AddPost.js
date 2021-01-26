@@ -1,8 +1,8 @@
 import React from "react";
 
 import Context from "../Context";
-// import config from "../config";
-// import TokenService from "../services/token-service";
+import config from "../config";
+import TokenService from "../services/token-service";
 
 export default class AddPost extends React.Component {
   static contextType = Context;
@@ -21,34 +21,34 @@ export default class AddPost extends React.Component {
 
     const post = {
       id: this.context.posts.length + 1,
+      campaign_id: this.context.campaign.id,
+      character_id: this.context.character.id,
       title: title.value,
       content: content.value,
       private: postType.checked,
     };
-    // fetch(`${config.API_ENDPOINT}api/post`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     authorization: `Bearer ${TokenService.getAuthToken()}`,
-    //   },
-    //   body: JSON.stringify(post),
-    // })
-    //   .then((res) => {
-    //     if (!res.ok) {
-    //       return res.json().then((error) => {
-    //         throw error;
-    //       });
-    //     }
-    //     return res.json();
-    //   })
-    //   .then((post) => {
-    //     alert("Your post has been added to the campaign");
-    //     e.target.reset();
-    //     this.context.addPost(post);
-    //   })
-    //   .catch((error) => this.setState({ error }));
-    this.context.addPost(post);
-    e.target.reset();
+    fetch(`${config.API_ENDPOINT}api/post`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(post),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => {
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then((post) => {
+        alert("Your post has been added to the campaign");
+        e.target.reset();
+        this.context.addPost(post);
+      })
+      .catch((error) => this.setState({ error }));
   };
 
   render() {

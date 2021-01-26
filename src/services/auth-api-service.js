@@ -2,7 +2,7 @@ import config from "../config";
 
 export default {
   postUser(user) {
-    return fetch(`${config.API_ENDPOINT}api/users`, {
+    return fetch(`${config.API_ENDPOINT}api/user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

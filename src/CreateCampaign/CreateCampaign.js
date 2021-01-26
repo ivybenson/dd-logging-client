@@ -1,7 +1,7 @@
 import React from "react";
 import Context from "../Context";
-// import config from "../config";
-// import TokenService from "../services/token-service";
+import config from "../config";
+import TokenService from "../services/token-service";
 
 export default class CreateCampaign extends React.Component {
   static contextType = Context;
@@ -16,28 +16,28 @@ export default class CreateCampaign extends React.Component {
       name: e.target.name.value,
       id: Math.floor(Math.random() * 100) + 1,
     };
-    // fetch(`${config.API_ENDPOINT}api/campaign`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     authorization: `Bearer ${TokenService.getAuthToken()}`,
-    //   },
-    //   body: JSON.stringify(campaign),
-    // })
-    //   .then((res) => {
-    //     if (!res.ok) {
-    //       return res.json().then((error) => {
-    //         throw error;
-    //       });
-    //     }
-    //     return res.json();
-    //   })
-    //   .then((campaign) => {
-    //     alert("Your campaign has been added to your account");
-    //     e.target.reset();
-    //     this.context.addCampaign(campaign);
-    //   })
-    //   .catch((error) => this.setState({ error }));
+    fetch(`${config.API_ENDPOINT}api/campaign`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(campaign),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => {
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then((campaign) => {
+        alert("Your campaign has been added to your account");
+        e.target.reset();
+        this.context.addCampaign(campaign);
+      })
+      .catch((error) => this.setState({ error }));
 
     this.context.addCampaign(campaign);
     this.props.history.push("/character");
@@ -67,6 +67,16 @@ export default class CreateCampaign extends React.Component {
                 />
                 <button type="submit">Add Campaign</button>
               </fieldset>
+            </form>
+            <p>Campaign Already Created? Please enter campaign code.</p>
+            <form>
+              <label>Code:</label>
+              <input
+                type="integer"
+                id="campaignid"
+                aria-label="campaign id"
+                name="campaignid"
+              />
             </form>
           </div>
         )}

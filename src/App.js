@@ -2,6 +2,8 @@ import "./App.css";
 import React from "react";
 import { Route } from "react-router-dom";
 import Context from "./Context";
+import config from "./config";
+import TokenService from "./services/token-service";
 import CreateCampaign from "./CreateCampaign/CreateCampaign";
 import CreateCharacter from "./CreateCharacter/CreateCharacter";
 import Dashboard from "./Dashboard/Dashboard";
@@ -28,6 +30,37 @@ class App extends React.Component {
       this.setState({
         posts: [...this.state.posts, post],
       });
+    },
+    getCampaign: () => {
+      fetch(`${config.API_ENDPOINT}api/campaign`, {
+        headers: {
+          Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((campaign) =>
+          this.setState({ campaign }, () => this.state.getCharacter())
+        );
+    },
+    getCharacter: () => {
+      fetch(`${config.API_ENDPOINT}api/character`, {
+        headers: {
+          Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((character) =>
+          this.setState({ character }, () => this.state.getPosts())
+        );
+    },
+    getPosts: () => {
+      fetch(`${config.API_ENDPOINT}api/post`, {
+        headers: {
+          Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((posts) => this.setState({ posts }));
     },
     logout: () => {
       this.setState({ posts: [], character: {} });

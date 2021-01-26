@@ -1,7 +1,7 @@
 import React from "react";
 import Context from "../Context";
-// import config from "../config";
-// import TokenService from "../services/token-service";
+import config from "../config";
+import TokenService from "../services/token-service";
 
 export default class CreateCharacter extends React.Component {
   static contextType = Context;
@@ -10,36 +10,35 @@ export default class CreateCharacter extends React.Component {
     e.preventDefault();
     const { name, characterclass, race, level } = e.target;
     const character = {
+      campaign_id: this.context.campaign.id,
       name: name.value,
       characterclass: characterclass.value,
       race: race.value,
       level: level.value,
     };
-    // fetch(`${config.API_ENDPOINT}api/character`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     authorization: `Bearer ${TokenService.getAuthToken()}`,
-    //   },
-    //   body: JSON.stringify(character),
-    // })
-    //   .then((res) => {
-    //     if (!res.ok) {
-    //       return res.json().then((error) => {
-    //         throw error;
-    //       });
-    //     }
-    //     return res.json();
-    //   })
-    //   .then((character) => {
-    //     alert("Your character has been added to your account.");
-    //     e.target.reset();
-    //     this.context.addCharacter(character);
-    //   })
-    //   .catch((error) => this.setState({ error }));
-
-    this.context.addCharacter(character);
-    this.props.history.push("/dashboard");
+    fetch(`${config.API_ENDPOINT}api/character`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(character),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => {
+            throw error;
+          });
+        }
+        return res.json();
+      })
+      .then((character) => {
+        alert("Your character has been added to your account.");
+        e.target.reset();
+        this.context.addCharacter(character);
+        this.props.history.push("/dashboard");
+      })
+      .catch((error) => this.setState({ error }));
   };
 
   render() {

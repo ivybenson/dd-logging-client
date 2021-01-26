@@ -1,6 +1,6 @@
 import React from "react";
-// import AuthApiService from "../services/auth-api-service";
-import TokenService from "../services/token-service";
+import "./Signup.css";
+import AuthApiService from "../services/auth-api-service";
 import { Link } from "react-router-dom";
 
 export default class Signup extends React.Component {
@@ -10,21 +10,19 @@ export default class Signup extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // const { email, password, confirmPassword } = e.target;
-    // this.setState({ error: null });
-    // AuthApiService.postUser({
-    //   email: email.value,
-    //   password: password.value,
-    //   confirmPassword: confirmPassword.value,
-    // })
-    //   .then((user) => {
-    //     this.props.history.push("./login");
-    //   })
-    //   .catch((res) => {
-    //     this.setState({ error: res.error });
-    //   });
-    TokenService.saveAuthToken("098092840981209wceoiewuhc");
-    this.props.history.push("/dashboard");
+    const { email, password, confirmPassword } = e.target;
+    this.setState({ error: null });
+    AuthApiService.postUser({
+      email: email.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value,
+    })
+      .then((user) => {
+        this.props.history.push("./login");
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
   };
 
   render() {
