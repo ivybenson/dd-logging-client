@@ -1,13 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import CampaignLog from "../CampaignLog/CampaignLog";
 import AddPost from "../AddPost/AddPost";
 import Context from "../Context";
 
 export default class Dashboard extends React.Component {
   static contextType = Context;
+
+  componentDidMount() {
+    this.context.getPosts();
+  }
   render() {
     return (
-      <div onSubmit={this.addEvent}>
+      <div>
+        <Link to="/createcharacter">Update Character</Link>
         <h3>
           Campaign: {this.context.campaign.name} - #{this.context.campaign.id}
         </h3>

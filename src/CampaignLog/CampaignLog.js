@@ -3,6 +3,9 @@ import Context from "../Context";
 
 export default class CampaginLog extends React.Component {
   static contextType = Context;
+  state = {
+    error: null,
+  };
 
   render() {
     const { posts = [] } = this.context;
@@ -12,7 +15,7 @@ export default class CampaginLog extends React.Component {
 
         <ul>
           {posts
-            .filter((post) => !post.private)
+            .filter((post) => !post.completed)
             .map((post) => (
               <li key={post.id}>
                 <h4>{post.title}</h4>
@@ -23,7 +26,7 @@ export default class CampaginLog extends React.Component {
         <h2>Private Log</h2>
         <ul>
           {posts
-            .filter((post) => post.private)
+            .filter((post) => post.completed)
             .map((post) => (
               <li key={post.id}>
                 <h4>{post.title}</h4>

@@ -14,15 +14,24 @@ export default class CreateCampaign extends React.Component {
     e.preventDefault();
     const campaign = {
       name: e.target.name.value,
-      id: Math.floor(Math.random() * 100) + 1,
     };
-    fetch(`${config.API_ENDPOINT}api/campaign`, {
+    this.makeCall(`${config.API_ENDPOINT}api/campaign`, campaign);
+  };
+
+  addCreatedCampaign = (e) => {
+    e.preventDefault();
+    const campaign_id = e.target.campaign_id.value;
+    this.makeCall(`${config.API_ENDPOINT}api/campaign/${campaign_id}`, {});
+  };
+
+  makeCall = (url, data) => {
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify(campaign),
+      body: JSON.stringify(data),
     })
       .then((res) => {
         if (!res.ok) {
@@ -32,54 +41,54 @@ export default class CreateCampaign extends React.Component {
         }
         return res.json();
       })
-      .then((campaign) => {
-        alert("Your campaign has been added to your account");
-        e.target.reset();
-        this.context.addCampaign(campaign);
+      .then((data) => {
+        this.context.addCharacter(data.character);
+        this.context.addCampaign(data.campaign);
+        this.props.history.push("/createcharacter");
       })
       .catch((error) => this.setState({ error }));
-
-    this.context.addCampaign(campaign);
-    this.props.history.push("/character");
   };
 
   render() {
     return (
       <div>
-        {this.context.campaign.id ? (
+        {/* {this.context.campaign.id ? (
           <h3>
             Campaign: {this.context.campaign.name} - #{this.context.campaign.id}
           </h3>
-        ) : (
-          <div>
-            Create Campaign
-            <form onSubmit={this.addSetCampaign}>
-              <fieldset>
-                <label>Campaign Name: {""}</label>
-                <input
-                  type="text"
-                  placeholder="Journey Near and Far"
-                  id="name"
-                  required
-                  aria-required="true"
-                  aria-label="campaign name"
-                  name="name"
-                />
-                <button type="submit">Add Campaign</button>
-              </fieldset>
-            </form>
-            <p>Campaign Already Created? Please enter campaign code.</p>
-            <form>
+        ) : ( */}
+        <div>
+          Create Campaign
+          <form onSubmit={this.addSetCampaign}>
+            <fieldset>
+              <label>Campaign Name: {""}</label>
+              <input
+                type="text"
+                placeholder="Journey Near and Far"
+                id="name"
+                required
+                aria-required="true"
+                aria-label="campaign name"
+                name="name"
+              />
+              <button type="submit">Add New Campaign</button>
+            </fieldset>
+          </form>
+          <p>Campaign Already Created? Please enter campaign code.</p>
+          <form onSubmit={this.addCreatedCampaign}>
+            <fieldset>
               <label>Code:</label>
               <input
                 type="integer"
-                id="campaignid"
+                id="campaign_id"
                 aria-label="campaign id"
-                name="campaignid"
+                name="campaign_id"
               />
-            </form>
-          </div>
-        )}
+              <button type="submit">Add To Existing Campaign</button>
+            </fieldset>
+          </form>
+        </div>
+        {/* )} */}
       </div>
     );
   }

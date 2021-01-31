@@ -21,7 +21,7 @@ export default class Signup extends React.Component {
         this.props.history.push("./login");
       })
       .catch((res) => {
-        this.setState({ error: res.error });
+        this.setState([{ error: res.error }]);
       });
   };
 

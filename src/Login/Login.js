@@ -18,11 +18,16 @@ export default class Login extends React.Component {
     AuthApiService.loginUser(user)
       .then((loginResponse) => {
         TokenService.saveAuthToken(loginResponse.authToken);
-        this.context.getCampaign();
-        this.props.history.push("/dashboard");
+        this.context.getCharacter(() => {
+          if (this.context.campaign.name && this.context.character.name) {
+            this.props.history.push("/dashboard");
+          } else {
+            this.props.history.push("/createcampaign");
+          }
+        });
       })
       .catch((res) => {
-        this.setState({ error: res.error });
+        this.setState([{ error: res.error }]);
       });
   };
 

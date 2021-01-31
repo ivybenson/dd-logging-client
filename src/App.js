@@ -21,6 +21,7 @@ class App extends React.Component {
     addCampaign: (campaign) => {
       this.setState({ campaign: campaign });
     },
+
     addCharacter: (character) => {
       this.setState({
         character: character,
@@ -31,26 +32,37 @@ class App extends React.Component {
         posts: [...this.state.posts, post],
       });
     },
-    getCampaign: () => {
-      fetch(`${config.API_ENDPOINT}api/campaign`, {
-        headers: {
-          Authorization: `Bearer ${TokenService.getAuthToken()}`,
-        },
-      })
+    getCampaign: (cb) => {
+      fetch(
+        `${config.API_ENDPOINT}api/campaign/${this.state.character.campaign_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${TokenService.getAuthToken()}`,
+          },
+        }
+      )
         .then((res) => res.json())
-        .then((campaign) =>
-          this.setState({ campaign }, () => this.state.getCharacter())
+        .then((data) =>
+          this.setState({ campaign: data.campaign ? data.campaign : {} }, cb)
         );
     },
-    getCharacter: () => {
+    getCharacter: (cb) => {
       fetch(`${config.API_ENDPOINT}api/character`, {
         headers: {
           Authorization: `Bearer ${TokenService.getAuthToken()}`,
         },
       })
         .then((res) => res.json())
-        .then((character) =>
-          this.setState({ character }, () => this.state.getPosts())
+        .then((data) =>
+          this.setState(
+            { character: data.character ? data.character : {} },
+            () => {
+              this.state.character.campaign_id
+                ? this.state.getCampaign(cb)
+                : cb();
+            }
+            // this.setState({ character }, () => this.state.getPosts())
+          )
         );
     },
     getPosts: () => {
@@ -60,12 +72,19 @@ class App extends React.Component {
         },
       })
         .then((res) => res.json())
-        .then((posts) => this.setState({ posts }));
+        .then((data) => this.setState({ posts: data.posts ? data.posts : [] }));
     },
     logout: () => {
-      this.setState({ posts: [], character: {} });
+      this.setState({ users: [], campaign: {}, character: {}, posts: [] });
     },
   };
+
+  componentDidMount() {
+    if (TokenService.hasAuthToken()) {
+      this.state.getCharacter();
+    }
+  }
+
   render() {
     return (
       <Context.Provider value={this.state}>
@@ -73,7 +92,7 @@ class App extends React.Component {
           <Route path="/" component={NavBar} />
           <Route path="/" exact component={LandingPage} />
           <Route path="/createcampaign" component={CreateCampaign} />
-          <Route path="/character" component={CreateCharacter} />
+          <Route path="/createcharacter" component={CreateCharacter} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
