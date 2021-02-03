@@ -9,6 +9,7 @@ export default class Login extends React.Component {
 
   state = {
     error: null,
+    0: null,
   };
 
   handleLogin = (e) => {
@@ -27,7 +28,7 @@ export default class Login extends React.Component {
         });
       })
       .catch((res) => {
-        this.setState([{ error: res.error }]);
+        this.setState({ error: res.error });
       });
   };
 

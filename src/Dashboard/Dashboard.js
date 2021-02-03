@@ -19,7 +19,7 @@ export default class Dashboard extends React.Component {
         </h3>
         <h3>
           You are {this.context.character.name} a {this.context.character.race}{" "}
-          {this.context.character.characterclass}, Level{" "}
+          {this.context.character.characterClass}, Level{" "}
           {this.context.character.level}
         </h3>
 

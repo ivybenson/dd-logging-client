@@ -27,6 +27,7 @@ export default class CampaginLog extends React.Component {
         <ul>
           {posts
             .filter((post) => post.completed)
+            .filter((post) => post.character_id === this.context.character.id)
             .map((post) => (
               <li key={post.id}>
                 <h4>{post.title}</h4>

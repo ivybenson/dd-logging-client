@@ -23,6 +23,7 @@ export default class AddPost extends React.Component {
       id: this.context.posts.length + 1,
       campaign_id: this.context.campaign.id,
       character_id: this.context.character.id,
+      character_name: this.context.character.name,
       title: title.value,
       content: content.value,
       private: postType.checked,
