@@ -48,6 +48,7 @@ export default class AddPost extends React.Component {
         alert("Your post has been added to the campaign");
         e.target.reset();
         this.context.addPost(post);
+        this.context.getPosts();
       })
       .catch((error) => this.setState({ error }));
   };

@@ -24,6 +24,22 @@
 }
 
 .add-post {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.add-post-form {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  width: 60%;
+  padding: 15px;
+  align-self: center;
+  margin-bottom: 5px;
   background-color: rgb(179, 173, 173);
 }
 
