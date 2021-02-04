@@ -1,6 +1,6 @@
 import config from "../config";
 
-export default {
+const authapiservice = {
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}api/users`, {
       method: "POST",
@@ -24,3 +24,5 @@ export default {
     );
   },
 };
+
+export default authapiservice;
