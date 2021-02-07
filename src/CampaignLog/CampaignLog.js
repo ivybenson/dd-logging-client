@@ -9,8 +9,9 @@ export default class CampaginLog extends React.Component {
 
   render() {
     const { posts = [] } = this.context;
+
     return (
-      <div>
+      <div className="campaign-log">
         <h2>Campagin Log</h2>
 
         <ul>

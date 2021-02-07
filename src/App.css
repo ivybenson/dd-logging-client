@@ -1,6 +1,7 @@
 * {
   font-family: Tahoma, sans-serif;
   list-style: none;
+  margin: 0;
 }
 
 .App {
@@ -12,6 +13,17 @@
   pointer-events: none;
 }
 
+.header {
+  font-family: "Montserrat", sans-serif;
+}
+nav {
+  font-size: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -19,8 +31,18 @@
 }
 
 .Navbar {
-  background-color: #028090;
+  background-color: #006600;
   font-size: larger;
+  padding: 5px;
+  color: white;
+}
+
+.nav-list {
+  padding: 5px;
+}
+
+fieldset {
+  border: none;
 }
 
 .add-post {
@@ -65,4 +87,119 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.create-campaign {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.create-campaign div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-content: center;
+}
+
+.create-campaign form {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 10px;
+  background: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black 2px solid;
+  width: 60%;
+  padding: 30px;
+  align-self: center;
+}
+
+.create-character {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.create-character div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-content: center;
+}
+
+.create-character form {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 10px;
+  background: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black 2px solid;
+  width: 60%;
+  padding: 30px;
+  align-self: center;
+}
+
+.signup-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.signup-page div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  align-content: center;
+}
+
+.signup-page form {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 10px;
+  background: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black 2px solid;
+  width: 60%;
+  padding: 30px;
+  align-self: center;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-form {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 10px;
+  background: lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: black 2px solid;
+  width: 60%;
+  padding: 20px;
+  align-self: center;
+}
+
+.defaultlogin {
+  background-color: rgb(198, 194, 194);
+  font-size: small;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  border: black 2px solid;
+  width: 60%;
+  padding: 20px;
+  align-self: center;
+}
+
+.add-post-form {
+  background: lightgray;
+}
+
+.campaign-log li {
+  background-color: lightgray;
+  border: 5px;
 }

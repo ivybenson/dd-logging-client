@@ -28,7 +28,7 @@ export default class AddPost extends React.Component {
       content: content.value,
       private: postType.checked,
     };
-    fetch(`${config.API_ENDPOINT}api/post`, {
+    fetch(`${config.API_ENDPOINT_TEST}api/post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,6 @@ export default class AddPost extends React.Component {
         return res.json();
       })
       .then((post) => {
-        alert("Your post has been added to the campaign");
         e.target.reset();
         this.context.addPost(post);
         this.context.getPosts();
