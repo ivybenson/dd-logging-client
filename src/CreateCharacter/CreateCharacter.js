@@ -97,9 +97,9 @@ export default class CreateCharacter extends React.Component {
               value={this.state.level || ""}
               onChange={(e) => this.setState({ level: e.target.value })}
             />
-            <label>Description: {""}</label>
+            <label>Additional Info: {""}</label>
             <input
-              type="text"
+              type="textbox"
               placeholder="Notes"
               id="additionalInfo"
               required

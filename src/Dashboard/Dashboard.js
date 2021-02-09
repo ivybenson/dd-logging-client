@@ -13,16 +13,20 @@ export default class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/createcharacter">Update Character</Link>
-        <h3>
-          Campaign: {this.context.campaign.name} - #{this.context.campaign.id}
-        </h3>
-        <h3>
-          You are {this.context.character.name} a {this.context.character.race}{" "}
-          {this.context.character.characterClass}, Level{" "}
-          {this.context.character.level}
-        </h3>
+        <div className="character-stats">
+          <h3>
+            {this.context.campaign.name} Code: {this.context.campaign.id}
+          </h3>
+          <h3>
+            {this.context.character.name} Race: {this.context.character.race}{" "}
+            Class: {this.context.character.characterClass} Level{" "}
+            {this.context.character.level}
+          </h3>
 
+          <Link to="/createcharacter">
+            <button className="update-character-btn">Update Character</button>
+          </Link>
+        </div>
         <AddPost />
         <CampaignLog />
       </div>

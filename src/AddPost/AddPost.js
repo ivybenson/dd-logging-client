@@ -82,7 +82,7 @@ export default class AddPost extends React.Component {
             <input type="checkbox" name="postType" id="postType" />
           </p>
           <button className="add-post-button" type="submit">
-            Add Post
+            Post
           </button>
         </form>
       </div>
