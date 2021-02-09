@@ -14,18 +14,21 @@ export default class Dashboard extends React.Component {
     return (
       <div>
         <div className="character-stats">
-          <h3>
-            {this.context.campaign.name} Code: {this.context.campaign.id}
-          </h3>
-          <h3>
-            {this.context.character.name} Race: {this.context.character.race}{" "}
-            Class: {this.context.character.characterClass} Level{" "}
-            {this.context.character.level}
-          </h3>
+          <fieldset className="character-stats-form">
+            <h3>
+              {this.context.campaign.name} Code: {this.context.campaign.id}
+            </h3>
+            <h3>
+              {this.context.character.name} Race: {this.context.character.race}{" "}
+              Class: {this.context.character.characterClass} Level{" "}
+              {this.context.character.level} Items:{" "}
+              {this.context.character.additionalInfo}
+            </h3>
 
-          <Link to="/createcharacter">
-            <button className="update-character-btn">Update Character</button>
-          </Link>
+            <Link to="/createcharacter">
+              <button className="update-character-btn">Update Character</button>
+            </Link>
+          </fieldset>
         </div>
         <AddPost />
         <CampaignLog />
