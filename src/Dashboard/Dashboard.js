@@ -18,12 +18,11 @@ export default class Dashboard extends React.Component {
             <h3>
               {this.context.campaign.name} Code: {this.context.campaign.id}
             </h3>
-            <h3>
-              {this.context.character.name} Race: {this.context.character.race}{" "}
-              Class: {this.context.character.characterClass} Level{" "}
-              {this.context.character.level} Items:{" "}
-              {this.context.character.additionalInfo}
-            </h3>
+            <p>{this.context.character.name}</p>
+            <p>Race: {this.context.character.race} </p>
+            <p>Class: {this.context.character.characterClass} </p>
+            <p>Level {this.context.character.level}</p>
+            <p>Items: {this.context.character.additionalInfo}</p>
 
             <Link to="/createcharacter">
               <button className="update-character-btn">Update Character</button>

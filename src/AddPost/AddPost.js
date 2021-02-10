@@ -68,17 +68,19 @@ export default class AddPost extends React.Component {
               name="title"
             />
           </p>
-          <p>Thoughts: {""} </p>
-          <input
-            type="text"
-            id="content"
-            placeholder="thoughts about campaign"
-            aria-required="true"
-            aria-label="post-content"
-            name="content"
-          />
           <p>
-            <label htmlFor="postType">Private ?</label>
+            Thoughts: {""}
+            <input
+              type="text"
+              id="content"
+              placeholder="thoughts about campaign"
+              aria-required="true"
+              aria-label="post-content"
+              name="content"
+            />
+          </p>
+          <p>
+            <label htmlFor="postType">Private? {""}</label>
             <input type="checkbox" name="postType" id="postType" />
           </p>
           <button className="add-post-button" type="submit">
