@@ -1,12 +1,13 @@
 import React from "react";
 import Context from "../Context";
+import Moment from "moment";
 
 export default class CampaignLog extends React.Component {
   static contextType = Context;
   state = {
     error: null,
-    publicHidden: true,
-    privateHidden: true,
+    publicOpen: true,
+    privateOpen: true,
   };
 
   render() {
@@ -16,12 +17,10 @@ export default class CampaignLog extends React.Component {
       <div className="campaign-log-combined">
         <div
           className="public-log"
-          onClick={() =>
-            this.setState({ publicHidden: !this.state.publicHidden })
-          }
+          onClick={() => this.setState({ publicOpen: !this.state.publicOpen })}
         >
           <h2>Campaign Log</h2>
-          {this.state.publicHidden && (
+          {this.state.publicOpen && (
             <ul>
               {posts
                 .filter((post) => !post.completed)
@@ -30,7 +29,8 @@ export default class CampaignLog extends React.Component {
                     <h4>{post.title}</h4>
                     <p>{post.content}</p>
                     <p>
-                      {post.character_name} on {post.datecreated}
+                      {post.character_name} on{" "}
+                      {Moment(post.datecreated).format("MM-DD-YYYY")}
                     </p>
                   </li>
                 ))}
@@ -41,11 +41,11 @@ export default class CampaignLog extends React.Component {
         <div
           className="private-log"
           onClick={() =>
-            this.setState({ privateHidden: !this.state.privateHidden })
+            this.setState({ privateOpen: !this.state.privateOpen })
           }
         >
-          <h2>Private</h2>
-          {this.state.privateHidden && (
+          <h2>Private Musings</h2>
+          {this.state.privateOpen && (
             <ul>
               {posts
                 .filter((post) => post.completed)
@@ -57,7 +57,8 @@ export default class CampaignLog extends React.Component {
                     <h4>{post.title}</h4>
                     <p>{post.content}</p>
                     <p>
-                      {post.character_name} on {post.datecreated}
+                      {post.character_name} on{" "}
+                      {Moment(post.datecreated).format("MM-DD-YYYY")}
                     </p>
                   </li>
                 ))}

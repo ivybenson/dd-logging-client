@@ -56,6 +56,7 @@ export default class AddPost extends React.Component {
     return (
       <div className="add-post">
         <form className="add-post-form" onSubmit={this.addNewPost}>
+          <h3>Update Your Campaign</h3>
           <p>
             Title: {""}
             <input

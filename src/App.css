@@ -64,6 +64,7 @@ fieldset {
   align-self: center;
   margin-bottom: 5px;
   background-color: rgb(179, 173, 173);
+  border-radius: 10px;
 }
 
 .App-header {
@@ -204,23 +205,49 @@ fieldset {
 }
 
 .campaign-log-combined li {
-  margin: 10px 15%;
+  margin: 10px 5%;
   background-color: lightgray;
   padding: 10px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
+.campaign-log-combined div {
+  margin: 5px;
+  border: 2px rgb(226, 232, 226);
+  margin-left: 10%;
+  margin-right: 10%;
+  border-style: solid;
+}
+
 .public-log {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+.public-log:hover {
+  background-color: rgb(226, 232, 226);
+}
+
+.public-log:active {
+  background-color: green;
 }
 
 .private-log {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+.private-log:hover {
+  background-color: rgb(226, 232, 226);
+}
+
+.private-log:active {
+  background-color: green;
 }
 
 button {
@@ -259,4 +286,9 @@ button :active {
   align-items: center;
   padding: 15px;
   align-self: center;
+  border-radius: 10px;
+}
+
+.landingPage p {
+  padding: 5%;
 }
