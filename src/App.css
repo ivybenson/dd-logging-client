@@ -1,3 +1,4 @@
+/* GENERAL APP FORMATTING */
 * {
   font-family: "Encode Sans Expanded", sans-serif;
   list-style: none;
@@ -14,16 +15,8 @@
   pointer-events: none;
 }
 
-.header {
-  font-family: "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
-  padding: 5px;
-}
-nav {
-  font-size: 30px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+fieldset {
+  border: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -31,6 +24,42 @@ nav {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* APP BUTTONS */
+
+button {
+  background-color: green;
+  color: white;
+  margin: 4px;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+button :active {
+  background-color: black;
+  color: white;
+}
+
+/* NAVBAR AND HEADER */
 
 .Navbar {
   background-color: #006600;
@@ -43,9 +72,29 @@ nav {
   padding: 5px;
 }
 
-fieldset {
-  border: none;
+.header {
+  font-family: "Roboto", "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 5px;
 }
+nav {
+  font-size: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* ADD POST */
 
 .add-post {
   display: flex;
@@ -67,29 +116,12 @@ fieldset {
   border-radius: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* LANDING PAGE */
+.landingPage p {
+  padding: 5%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* CREATE CAMPAIGN */
 
 .create-campaign {
   display: flex;
@@ -115,6 +147,8 @@ fieldset {
   padding: 30px;
   align-self: center;
 }
+
+/* CREATE CHARACTER */
 
 .create-character {
   display: flex;
@@ -144,6 +178,8 @@ fieldset {
   margin: 5px;
 }
 
+/* SIGN UP PAGE */
+
 .signup-page {
   display: flex;
   justify-content: center;
@@ -168,6 +204,8 @@ fieldset {
   padding: 30px;
   align-self: center;
 }
+
+/* LOGIN FORMATTING */
 
 .login {
   display: flex;
@@ -200,10 +238,13 @@ fieldset {
   align-self: center;
 }
 
+/* ADD POST */
+
 .add-post-form {
   background: lightgray;
 }
 
+/* CAMPAIGN LOG */
 .campaign-log-combined li {
   margin: 10px 5%;
   background-color: lightgray;
@@ -250,25 +291,6 @@ fieldset {
   background-color: green;
 }
 
-button {
-  background-color: green;
-  color: white;
-  margin: 4px;
-  padding: 4px;
-  border-radius: 8px;
-}
-
-button:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}
-
-button :active {
-  background-color: black;
-  color: white;
-}
-
 .character-stats {
   display: flex;
   justify-content: center;
@@ -287,8 +309,4 @@ button :active {
   padding: 15px;
   align-self: center;
   border-radius: 10px;
-}
-
-.landingPage p {
-  padding: 5%;
 }
