@@ -18,12 +18,14 @@ Dungeons Truth is an app that role playing game players can use to create a more
 
 ### Screenshots
 
-![Add Habit](./screenshots/addhabit.png)
-![Add Habit 2](./screenshots/addhabit2.png)
-![Habits Added](./screenshots/habitsadded.png)
-![Landing Page](./screenshots/landingpage.png)
+![Landing Page](./screenshots/welcome.png)
 ![Login](./screenshots/login.png)
 ![Signup](./screenshots/signup.png)
+![CreateCampaign](./screenshots/createcampaign.png)
+![CreateCharacter](./screenshots/createcharacter.png)
+![Dashboard](./screenshots/dashboard.png)
+![Campaign](./screenshots/campaign.png)
+![Private](./screenshots/private.png)
 
 ## Technologies Used
 
