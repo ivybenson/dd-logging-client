@@ -39,7 +39,7 @@ export default class Login extends React.Component {
         <div className="defaultlogin">
           Demo login:{" "}
           <ul>
-            <li>Email: demo1@demo.com</li>
+            <li>Email: demo@demo.com</li>
             <li>Password: Password1!</li>
           </ul>
         </div>
