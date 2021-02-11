@@ -4,7 +4,7 @@
 
 Tell your story your way.
 
-Live app: (https://habit-app-omega.vercel.app/)
+Live app: (https://dungeons-truth-ggdcc6s1c.vercel.app/)
 
 ## Table of Contents
 
