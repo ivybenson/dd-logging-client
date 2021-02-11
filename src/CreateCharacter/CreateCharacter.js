@@ -11,7 +11,7 @@ export default class CreateCharacter extends React.Component {
   addSetCharacter = (e) => {
     e.preventDefault();
 
-    fetch(`${config.API_ENDPOINT_TEST}api/character/${this.state.id}`, {
+    fetch(`${config.API_ENDPOINT}api/character/${this.state.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

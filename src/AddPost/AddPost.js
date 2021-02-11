@@ -28,7 +28,7 @@ export default class AddPost extends React.Component {
       content: content.value,
       private: postType.checked,
     };
-    fetch(`${config.API_ENDPOINT_TEST}api/post`, {
+    fetch(`${config.API_ENDPOINT}api/post`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

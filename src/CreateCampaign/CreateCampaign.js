@@ -15,13 +15,13 @@ export default class CreateCampaign extends React.Component {
     const campaign = {
       name: e.target.name.value,
     };
-    this.makeCall(`${config.API_ENDPOINT_TEST}api/campaign`, campaign);
+    this.makeCall(`${config.API_ENDPOINT}api/campaign`, campaign);
   };
 
   addCreatedCampaign = (e) => {
     e.preventDefault();
     const campaign_id = e.target.campaign_id.value;
-    this.makeCall(`${config.API_ENDPOINT_TEST}api/campaign/${campaign_id}`, {});
+    this.makeCall(`${config.API_ENDPOINT}api/campaign/${campaign_id}`, {});
   };
 
   makeCall = (url, data) => {

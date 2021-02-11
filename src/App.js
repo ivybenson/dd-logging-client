@@ -34,7 +34,7 @@ class App extends React.Component {
     },
     getCampaign: (cb) => {
       fetch(
-        `${config.API_ENDPOINT_TEST}api/campaign/${this.state.character.campaign_id}`,
+        `${config.API_ENDPOINT}api/campaign/${this.state.character.campaign_id}`,
         {
           headers: {
             Authorization: `Bearer ${TokenService.getAuthToken()}`,
@@ -47,7 +47,7 @@ class App extends React.Component {
         );
     },
     getCharacter: (cb) => {
-      fetch(`${config.API_ENDPOINT_TEST}api/character`, {
+      fetch(`${config.API_ENDPOINT}api/character`, {
         headers: {
           Authorization: `Bearer ${TokenService.getAuthToken()}`,
         },
@@ -65,7 +65,7 @@ class App extends React.Component {
         );
     },
     getPosts: () => {
-      fetch(`${config.API_ENDPOINT_TEST}api/post`, {
+      fetch(`${config.API_ENDPOINT}api/post`, {
         headers: {
           Authorization: `Bearer ${TokenService.getAuthToken()}`,
         },
@@ -82,9 +82,7 @@ class App extends React.Component {
     if (TokenService.hasAuthToken()) {
       this.state.getCharacter(() => {});
     }
-    fetch(config.API_ENDPOINT_TEST).then((res) =>
-      console.log("heroku is woke")
-    );
+    fetch(config.API_ENDPOINT).then((res) => console.log("heroku is woke"));
   }
 
   render() {
